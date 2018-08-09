@@ -1,20 +1,20 @@
-import React, {Component} from 'react';
+import React from 'react';
 import 'tachyons';
 
-export  default class Card extends Component{
+const  Card = ({id,name, email}) =>{
 
-    render() {
-        const {id,name, email} = this.props;
+    // const {id,name, email} = this.props;
 
-        return(
-            <div className="bg-light-green dib br3 pa3 ma2  grow shadow-1">
-                <img alt="robots" src={`https://robohash.org/${id}?200x200`} width="200"/>
-                <div className="tc" >
-                    <h3>{name}</h3>
-                    <p>{email}</p>
-                </div>
+    return(
+        <div className="bg-light-green dib br3 pa3 ma2  grow shadow-1">
+            <img alt="robots" src={`https://robohash.org/${id}?200x200`} width="200"/>
+            <div className="tc" >
+                <h3>{name}</h3>
+                <p>{email}</p>
             </div>
-           
-        );
-    }
+        </div>
+        
+    );
+    
 }
+export default Card

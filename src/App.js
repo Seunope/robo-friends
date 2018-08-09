@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SearchBox from './components/SearchBox';
 import CardList from './components/CardList';
-
-
+// import Scroll from './components/CardList';
 class App extends Component {
 
   constructor(props){
@@ -13,7 +12,7 @@ class App extends Component {
     }
   }
 
-  componentWillMount(){
+  componentDidMount(){
     fetch('http://jsonplaceholder.typicode.com/users')
     .then(response =>{ return response.json()})
     .then(data => {
@@ -40,11 +39,15 @@ class App extends Component {
       console.log(filterRobots);
     }
 
+    if(this.state.robots.length === 0){
+      return <h1>Loading..</h1>
+    }
+
     return (
       <div className="tc">
-        <h2 className="f1">Robo Friends</h2>
+        <h1 className="f1">Robo Friends</h1>
         <SearchBox searchChange={this.onSearchChange} />
-        <CardList robots={filterRobots}/>
+        <CardList robots={this.state.robots}/>
       </div>
     );
   }
